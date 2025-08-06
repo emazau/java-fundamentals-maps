@@ -4,6 +4,7 @@ import com.booleanuk.helpers.ExerciseBase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Exercise extends ExerciseBase {
     /*
@@ -47,6 +48,9 @@ public class Exercise extends ExerciseBase {
          The method must return the value associated to the provided key from the HashMap created
          in the createPerson method
      */
+    public String getValue(String s1){
+        return createPerson().get(s1);
+    }
 
 
 
@@ -57,18 +61,26 @@ public class Exercise extends ExerciseBase {
          The method must return a boolean that represents whether the string provided exists as a key
          in the provided HashMap
      */
-
+    public boolean hasKey(HashMap<String, String> map, String s1){
+        return map.containsKey(s1);
+    }
 
 
     /*
         TODO: 3. Create a method named getValueOrDefault that accepts two parameters:
          - A HashMap of String, Integer key value pairs
          - A string
-         The method must use the string provided to return the integer contained in the provided HashMap,
+         The method must use the string provided to return the integer
+          contained in the provided HashMap,
          or -1 if the string provided is not a key in the HashMap
      */
 
-
+    public int getValueOrDefault(HashMap<String, Integer> map, String s1){
+        if (map.get(s1)!=null) {
+            return map.get(s1);
+        }
+        return -1;
+    }
 
     /*
         TODO: 4. Complete the method below
@@ -89,13 +101,19 @@ public class Exercise extends ExerciseBase {
         map.put(7, "muse");
         map.put(96, "nice");
         // Write your code below this comment...
+        ArrayList<String> list = new ArrayList<>();
+        for (Integer number : numbers) {
+            String s2 = map.get(number);
+            if (map.containsValue(s2)) {
+                list.add(s2);
+            }
+
+        }
 
 
-
-
-        // ...and above this comment
+        // ...and above this comme nt
 
         // Change the return statement below to return your actual ArrayList
-        return new ArrayList<String>();
+        return list;
     }
 }
